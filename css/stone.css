@@ -1,0 +1,187 @@
+/* $Id$ */
+
+/*
++----------------------------------------------------------------+
+|   BlogBuzz for Dupal 6.x - Version 1.0                         |
+|   Copyright (C) 2009 Antsin.com All Rights Reserved.           |
+|   @license - GNU GENERAL PUBLIC LICENSE                        |
+|----------------------------------------------------------------|
+|   Theme Name: BlogBuzz                                         |
+|   Description: BlogBuzz by Antsin                              |
+|   Author: Antsin.com                                           |
+|   Website: http://www.antsin.com/                              |
+|----------------------------------------------------------------+
+*/
+
+/** body **/
+body
+{
+  color: #272626;
+  background-color: #ebebe1;
+}
+
+a 
+{
+  color: #272626;
+}
+
+a:hover, a:active, a:focus 
+{
+  color: #272626;
+}
+
+/** header **/
+#header
+{
+  color: #fff;
+  background-color: #272626;
+}
+
+#header-inner
+{
+  background: url(../images/header_bg.png) no-repeat left 40%;
+}
+
+#site-name a
+{
+  color: #fff;
+  text-decoration: none;
+}
+/** main **/
+#main
+{
+  border-top: 1px solid #ffffff;
+}
+
+#showcase
+{
+  background-color: #8d9091;
+}
+
+/** content **/
+div.tabs a.active
+{
+  background-color: #ebebe1 !important;
+  border-bottom: 1px solid #ebebe1 !important;
+}
+
+/** navbar **/
+#navbar
+{
+  background: #8d9091 url(../images/menu_bg.png) repeat-x top;
+}
+
+#primary ul li.hover,
+#primary ul li:hover,
+#primary ul li.active-trail
+{
+  border-style: solid;
+  border-width: 1px 1px 1px 0;
+  border-color: #9c9871 #fbfaed #8d9091;
+  background-color: #8d9091;
+}
+
+#primary ul a:active { color: #B5B4AA !important;}
+#primary li.expanded ul a:active,
+#primary li.leaf ul a:active { color: #B5B4AA !important;}
+
+#primary ul ul li { 
+  border: 1px solid #6C6E6F;
+  border-top: none;
+  background-color: #8d9091;
+}
+
+#primary ul ul li:hover,
+#primary ul ul li.active-trail{
+  border: 1px solid #6C6E6F;
+  border-top: none;
+}
+
+#primary ul ul li.expanded {
+  background: #8d9091 url(../images/menu_arrow_right.png) no-repeat 100% 50%;
+}
+
+#primary ul ul ul li.first { 
+  border: 1px solid #6C6E6F;
+}
+
+#secondary ul li a
+{
+  color: #B5B4AA;
+  border-right: 1px solid #B5B4AA;
+}
+
+/** sidebar-right **/
+#sidebar-right
+{
+  border: 1px solid #d8d9c7;
+}
+
+#sidebar-right-inner
+{
+  border: 1px solid #fff;
+}
+
+/** main bottom **/
+#main-bottom h2
+{
+  color: #565656;
+}
+
+/** footer **/
+#footer
+{
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ebebe1;
+  background-color: #b5b4aa;
+}
+
+/** closure **/
+#closure
+{
+  color: #B5B4AA;
+  background-color: #171615;
+}
+
+#closure a
+{
+  color: #B5B4AA;
+}
+
+#closure a:hover
+{
+  color: #fff;
+}
+
+/** nodes **/
+.node
+{
+  border: 1px solid #d8d9c7;
+}
+
+.node-inner
+{
+  border: 1px solid #fff;
+}
+
+.node div.extra-links
+{
+  background-color: #b5b4aa;
+}
+
+.node div.extra-links a
+{ 
+  color: #fff;
+}
+
+/** comments **/
+.comment .picture img
+{
+  background: #fff;
+  border: 1px solid #dddddd;
+}
+
+.comment .picture img:hover
+{
+  border-color: #999;
+}
