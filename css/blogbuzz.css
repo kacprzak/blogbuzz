@@ -277,14 +277,38 @@ h3
   font-size: 120%;
 }
 
-a 
+a
 {
+  color: #272626;
   text-decoration: none;
 }
 
 a:hover, a:active, a:focus 
 {
+  color: #272626;
   text-decoration: underline;
+}
+
+/** header **/
+#header
+{
+  color: #fff;
+  background-color: #272626;
+}
+
+#header-inner
+{
+  background: url(../images/header_bg.png) no-repeat left 40%;
+}
+
+#header-blocks a
+{
+  color: #B5B4AA;
+}
+
+#site-name a
+{
+  color: #fff;
 }
 
 /** showcase **/
@@ -300,6 +324,16 @@ a:hover, a:active, a:focus
 }
 
 /** content **/
+#content a
+{
+  color: #B52000;
+}
+
+#content h1 a, #content h2 a, #content h3 a
+{
+  color: #272626;
+}
+
 #content-header h1
 {
   padding: 20px 0;
@@ -322,6 +356,8 @@ a:hover, a:active, a:focus
 {
   font-size: 90%;
   padding: 0 10px;
+  color: #B5B4AA;
+  border-right: 1px solid #B5B4AA;
 }
 
 /** main bottom **/
@@ -411,7 +447,7 @@ a:hover, a:active, a:focus
   border: none;
 }
 
-.node .terms 
+.node .terms
 {
   color: #fff;
 }
@@ -436,6 +472,11 @@ a:hover, a:active, a:focus
 {
   min-height: 20px;
   padding: 10px 20px;
+}
+
+.node div.extra-links a
+{
+  color: #fff !important;
 }
 
 div.extra-links li.comment_comments
@@ -676,7 +717,12 @@ ul.links li
   background: url(../images/read_more_light_hover.png) no-repeat right 5px;
 }
 
-.read-more a:hover, .read-more-light a:hover
+.read-more a
+{
+  color: #272626 !important;
+}
+
+.read-more a, .read-more a:hover, .read-more-light a:hover
 {
   text-decoration: none;
 }
@@ -732,6 +778,11 @@ ul.links li
 #primary
 {
   padding-top: 10px;
+}
+
+#primary a {
+  display: block;
+  padding: 8px 20px 14px 20px;
 }
 
 #primary ul,
@@ -807,7 +858,6 @@ ul.links li
 
 #primary ul li {
   margin: 0 15px;
-  padding: 8px 20px 14px 20px;
   background-color: transparent;
   text-transform : uppercase;
   color: #000;
@@ -832,14 +882,17 @@ ul.links li
 }
 
 #primary ul ul {
-  width: 150px;
+  width: 200px;
   margin-top: 1px;
 }
 
 #primary ul ul li {
   margin: 0;
-  padding: 10px 20px;
   font-weight: normal;
+}
+
+#primary ul ul a {
+  padding: 10px 20px;
 }
 
 #primary ul ul li.expanded {
