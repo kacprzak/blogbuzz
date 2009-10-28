@@ -24,9 +24,9 @@
           <?php print $date ?>
         </div>
       <?php endif; ?>
-    <h2 class="title">
+    <h1 class="title">
       <a href="<?php print $node_url; ?>" title="<?php print $title ?>"><?php print $title; ?></a>
-    </h2>
+    </h1>
 
   <?php if ($unpublished): ?>
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
