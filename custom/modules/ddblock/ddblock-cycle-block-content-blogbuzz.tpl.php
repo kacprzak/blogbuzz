@@ -40,14 +40,16 @@ drupal_add_css($directory .'/custom/modules/ddblock/' . $custom_template . '/ddb
 
        <div class="slide clear-block border">
         <div class="slide-inner clear-block border">
-		 <?php print $slider_item['slide_image']; ?>
-         <h1><?php print $slider_item['slide_title'] ?></h1> 
-         <p><?php print $slider_item['slide_text'] ?></p>
-         <div class="slide-read-more slide-read-more-<?php print $slide_direction ?> clear-block border">
-          <p><?php print $slider_item['slide_read_more'] ?></p>
-	     </div><!-- slide-read-more-->
-		</div> <!-- slide-inner-->
-       </div>  <!-- slide-->
+		 <div class="slide-text">
+          <h1><?php print $slider_item['slide_title'] ?></h1> 
+          <p><?php print $slider_item['slide_text'] ?></p>
+          <div class="slide-read-more slide-read-more-<?php print $slide_direction ?> clear-block border">
+           <p><?php print $slider_item['slide_read_more'] ?></p>
+	      </div><!-- slide-read-more-->
+		 </div><!-- slide-text-->
+		 <div class="slide-image"><?php print $slider_item['slide_image']; ?></div>
+		</div><!-- slide-inner-->
+       </div><!-- slide-->
 
       <?php endforeach; ?>
      <?php endif; ?>

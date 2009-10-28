@@ -47,11 +47,22 @@ div.ddblock-cycle-blogbuzz div.slide
   top: 0;  
 }
 
+div.ddblock-cycle-blogbuzz div.slide-text
+{ 
+  float: left;
+  width: 390px;  
+}
+
+div.ddblock-cycle-blogbuzz div.slide-image
+{ 
+  float: left;
+  width: 520px;  
+  margin: 0 0 0 10px !important;
+}
+
 div.ddblock-cycle-blogbuzz div.slide-inner img
 { 
-  float: right;
   height: 200px;
-  margin: 0 0 0 10px !important;
   padding: 0 !important;
   border: 10px solid #fff;
   width: 500px;  
