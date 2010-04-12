@@ -17,24 +17,23 @@
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>"><div class="node-inner">
   <div class="content">
-  <?php print $picture; ?>
-
-      <?php if ($submitted): ?>
-        <div class="submitted">
-          <?php print $date ?>
-        </div>
-      <?php endif; ?>
+    <?php print $picture; ?>
+    <?php if ($submitted): ?>
+      <div class="submitted">
+        <?php print $date ?>
+      </div>
+    <?php endif; ?>
     <h1 class="title">
       <a href="<?php print $node_url; ?>" title="<?php print $title ?>"><?php print $title; ?></a>
     </h1>
 
-  <?php if ($unpublished): ?>
-    <div class="unpublished"><?php print t('Unpublished'); ?></div>
-  <?php endif; ?>
+    <?php if ($unpublished): ?>
+      <div class="unpublished"><?php print t('Unpublished'); ?></div>
+    <?php endif; ?>
 
-  <div class="detail clearfix">
-    <?php print $content; ?>
-  </div>
+    <div class="detail clear-block">
+      <?php print $content; ?>
+    </div>
   </div>
   
   <div class="extra-links">

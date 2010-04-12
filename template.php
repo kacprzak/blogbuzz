@@ -339,7 +339,7 @@ function phptemplate_search_block_form($form) {
   $output = '';
   
   // the search_block_form element is the search's text field, it also happens to be the form id, so can be confusing
-  $form['search_block_form']['#title'] = t('');
+  $form['search_block_form']['#title'] = '';
 
   $output .= drupal_render($form);
   return $output;
@@ -374,7 +374,7 @@ function blogbuzz_links($links, $attributes = array('class' => 'links')) {
       if (isset($link['href'])) {
         // Pass in $link as $options, they share the same keys.
         $link['html'] = TRUE;
-        $output .= l('<span>'. check_plain($link['title']) .'</span>', $link['href'], $link);
+		$output .= l('<span>'. $link['title'] .'</span>', $link['href'], $link);
       }
 
       else if (!empty($link['title'])) {
@@ -445,8 +445,8 @@ function blogbuzz_menu_item_link($link) {
  */
 function blogbuzz_id_safe($string) {
   // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
-  $string = drupal_strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', $string));
-  // If the first character is not a-z, add 'id' in front.
+  $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
+  // If the first character is not a-z, add 'n' in front.
   if (!ctype_lower($string{0})) { // Don't use ctype_alpha since its locale aware.
     $string = 'id' . $string;
   }

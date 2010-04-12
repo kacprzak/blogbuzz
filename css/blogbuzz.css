@@ -559,7 +559,7 @@ ul.links li
 .comment .content-inner
 {
   border: 1px solid #fff;
-  background: transparent url(../images/fade_comment2.png) repeat-x top;
+  background: transparent url(../images/fade_comment.png) repeat-x top;
 }
 
 .comment .detail
@@ -695,31 +695,27 @@ ul.links li
 }
 
 /** miscellaneous **/
-.read-more
+.read-more a
 {
+  color: #272626 !important;
   padding: 5px 25px 5px 0;
   background: url(../images/read_more.png) no-repeat right 5px;
 }
 
-.read-more:hover
+.read-more a:hover
 {
   background: url(../images/read_more_light.png) no-repeat right 5px;
 }
 
-.read-more-light
+.read-more-light a
 {
   padding: 5px 25px 5px 0;
   background: url(../images/read_more_light.png) no-repeat right 5px;
 }
 
-.read-more-light:hover
+.read-more-light a:hover
 {
   background: url(../images/read_more_light_hover.png) no-repeat right 5px;
-}
-
-.read-more a
-{
-  color: #272626 !important;
 }
 
 .read-more a, .read-more a:hover, .read-more-light a:hover
