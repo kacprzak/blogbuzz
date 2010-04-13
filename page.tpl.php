@@ -170,7 +170,7 @@
       </div></div> <!-- /#footer-inner, /#footer -->
     <?php endif; ?>
 
-    <div id="closure"><div id="closure-inner" class="region region-closure"><div id="designed-by"><small><a href="http://www.antsin.com" target="blank">Designed by Antsin.com</a></small></div><?php print $closure_region; ?></div></div>
+    <div id="closure"><div id="closure-inner" class="region region-closure"><div id="designed-by"><small><a href="http://www.antsin.com" title="Drupal Theme" target="_blank">Designed by Antsin.com</a></small></div><?php print $closure_region; ?></div></div>
 
   <?php print $closure; ?>
 
