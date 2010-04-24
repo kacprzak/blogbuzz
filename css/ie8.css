@@ -1,5 +1,4 @@
-<?php
-// $Id$
+/* $Id$ */
 
 /*
 +----------------------------------------------------------------+
@@ -13,15 +12,20 @@
 |   Website: http://www.antsin.com/                              |
 |----------------------------------------------------------------+
 */
-?>
 
-<div class="block block-<?php print $block->module ?> <?php if (function_exists(block_class)) print block_class($block); ?>">
-  <div class="block-inner clear-block">
-    <?php if ($block->subject): ?>
-      <div class="title"><h2><?php print $block->subject; ?></h2></div>
-    <?php endif; ?>
-	<div class="content-wrapper"><div class="content">
-      <?php print $block->content; ?>
-    </div></div>
-  </div>
-</div> <!-- /block-inner, /block -->
+/** button & read more **/
+span.button {
+  padding: 3px 0; 
+}
+
+#showcase-inner {
+  background: #fff url("../images/bg_fade_ie.png") repeat-x left top; 
+}
+
+#showcase h1, #showcase .slide-text, #showcase .slide-read-more a {
+  background-color: #fff; 
+}
+
+#primary ul li {
+  zoom: 1;
+}

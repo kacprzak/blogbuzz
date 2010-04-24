@@ -1,6 +1,6 @@
 $Id
 
-Thank you for download Antsin Drupal theme - BlogBuzz. 
+Thank you for download Antsin Drupal theme - BlogBuzzII. 
 
 For more information on how to use this theme, please visit our online forums at www.antsin.com.
 

@@ -72,7 +72,7 @@
      <?php endforeach; ?>    
     <?php else :?>
      <?php foreach ($content as $image_file): ?>
-      <img src="<?php print base_path() . $image_file; ?>" alt=""/>
+      <img src="<?php print base_path() . $image_file; ?>" alt="" width="55px" height="55px" />
      <?php endforeach; ?>    
     <?php endif;?>
    </div>

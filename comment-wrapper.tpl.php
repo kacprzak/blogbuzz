@@ -12,16 +12,14 @@
 |   Author: Antsin.com                                           |
 |   Website: http://www.antsin.com/                              |
 |----------------------------------------------------------------+
-*/
+*/ 
 ?>
 
-<div class="block block-<?php print $block->module ?> <?php if (function_exists(block_class)) print block_class($block); ?>">
-  <div class="block-inner clear-block">
-    <?php if ($block->subject): ?>
-      <div class="title"><h2><?php print $block->subject; ?></h2></div>
+<?php if ($content): ?>
+  <div id="comments">
+    <?php if ($node->type != 'forum'): ?>
+      <h2 class="title"><?php print t('Comments'); ?></h2>
     <?php endif; ?>
-	<div class="content-wrapper"><div class="content">
-      <?php print $block->content; ?>
-    </div></div>
+    <?php print $content; ?>
   </div>
-</div> <!-- /block-inner, /block -->
+<?php endif; ?>

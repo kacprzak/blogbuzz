@@ -3,8 +3,8 @@
 
 /*
 +----------------------------------------------------------------+
-|   BlogBuzz for Dupal 6.x - Version 1.0                         |
-|   Copyright (C) 2009 Antsin.com All Rights Reserved.           |
+|   BlogBuzz for Dupal 6.x - Version 2.0                         |
+|   Copyright (C) 2010 Antsin.com All Rights Reserved.           |
 |   @license - GNU GENERAL PUBLIC LICENSE                        |
 |----------------------------------------------------------------|
 |   Theme Name: BlogBuzz                                         |
@@ -23,7 +23,7 @@ function phptemplate_settings($saved_settings) {
  * matches the $defaults in the template.php file.
  */
   $defaults = array(
-    'blogbuzz_style' => 'stone',
+    'blogbuzz_style' => 'chocolate',
   );
 
   // Make the default content-type settings the same as the default theme settings,
@@ -59,8 +59,9 @@ function phptemplate_settings($saved_settings) {
     '#default_value' => $settings['blogbuzz_style'],
     '#options' => array(
       'stone'    => t('Stone Soft'),
-	  'dark'  => t('Coffee Black'),
-      'sky'   => t('Sky Blue'),
+	  'pink'     => t('Fresh Pink'),
+      'blue'     => t('Sky Blue'),
+	  'chocolate'=> t('Chocolate Milk'),
     ),
   ); 
  

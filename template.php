@@ -3,8 +3,8 @@
 
 /*
 +----------------------------------------------------------------+
-|   BlogBuzz for Dupal 6.x - Version 1.0                         |
-|   Copyright (C) 2009 Antsin.com All Rights Reserved.           |
+|   BlogBuzz for Dupal 6.x - Version 2.0                         |
+|   Copyright (C) 2010 Antsin.com All Rights Reserved.           |
 |   @license - GNU GENERAL PUBLIC LICENSE                        |
 |----------------------------------------------------------------|
 |   Theme Name: BlogBuzz                                         |
@@ -12,7 +12,7 @@
 |   Author: Antsin.com                                           |
 |   Website: http://www.antsin.com/                              |
 |----------------------------------------------------------------+
-*/ 
+*/  
 
 /**
  * Initialize theme settings
@@ -27,7 +27,7 @@ if (is_null(theme_get_setting('user_notverified_display'))) {
    * matches the $defaults in the theme-settings.php file.
    */
   $defaults = array(
-    'blogbuzz_style' => 'stone',
+    'blogbuzz_style' => 'chocolate',
   );
   
   // Make the default content-type settings the same as the default theme settings,
@@ -53,12 +53,12 @@ if (is_null(theme_get_setting('user_notverified_display'))) {
   theme_get_setting('', TRUE);
 }
 
-function blogbuzz_get_style() {
+function get_blogbuzz_style() {
   $style = theme_get_setting('blogbuzz_style');
   return $style;
 }
 
-drupal_add_css(drupal_get_path('theme', 'blogbuzz') . '/css/' . blogbuzz_get_style() . '.css', 'theme');
+drupal_add_css(drupal_get_path('theme', 'blogbuzz') . '/css/' . get_blogbuzz_style() . '.css', 'theme');
 
 function phptemplate_preprocess_page(&$vars) {
 
@@ -90,6 +90,10 @@ function phptemplate_preprocess_page(&$vars) {
     }
     $classes[] = blogbuzz_id_safe('section-' . $section);
   }
+
+  if (isset($vars['node'])) {
+    $classes[] = ($vars['node']) ? 'full-node' : 'none-node';
+  }
  
   $vars['body_classes_array'] = $classes;
   $vars['body_classes'] = implode(' ', $classes); // Concatenate with spaces.
@@ -97,8 +101,9 @@ function phptemplate_preprocess_page(&$vars) {
   // Add content top & postscript classes with number of active sub-regions
   $region_list = array(
     'main_bottom' => array('main_bottom_one', 'main_bottom_two', 'main_bottom_three', 'main_bottom_four'), 
-    'footer' => array('footer_one', 'footer_two', 'footer_three')
+    'footer' => array('footer_one', 'footer_two', 'footer_three', 'footer_four')
   );
+
   foreach ($region_list as $sub_region_key => $sub_region_list) {
     $active_regions = array();
     foreach ($sub_region_list as $region_item) {
@@ -134,6 +139,9 @@ function blogbuzz_preprocess_node(&$vars, $hook) {
   else {
     $vars['unpublished'] = FALSE;
   }
+  if ($vars['id'] == 1) {
+    $classes[] = 'node-first';
+  }
   if ($vars['uid'] && $vars['uid'] == $GLOBALS['user']->uid) {
     $classes[] = 'node-mine'; // Node is authored by current user.
   }
@@ -143,6 +151,17 @@ function blogbuzz_preprocess_node(&$vars, $hook) {
   // Class for node type: "node-type-page", "node-type-story", "node-type-my-custom-type", etc.
   $classes[] = blogbuzz_id_safe('node-type-' . $vars['type']);
   $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
+  if (module_exists('taxonomy')) {
+    $term_links = array();
+    foreach ($vars['node']->taxonomy as $term) {
+      $term_links[] = l($term->name, 'taxonomy/term/' . $term->tid,
+        array(
+          'attributes' => array(
+            'title' => $term->description
+        )));
+    }
+    $vars['node_terms'] = implode(', ', $term_links);
+  }
 }
 
 /**
@@ -339,7 +358,8 @@ function phptemplate_search_block_form($form) {
   $output = '';
   
   // the search_block_form element is the search's text field, it also happens to be the form id, so can be confusing
-  $form['search_block_form']['#title'] = '';
+  $form['search_block_form']['#title'] = t('');
+  $form['submit']['#value'] = 'Search';
 
   $output .= drupal_render($form);
   return $output;
@@ -347,8 +367,6 @@ function phptemplate_search_block_form($form) {
 
 function blogbuzz_links($links, $attributes = array('class' => 'links')) {
   $output = '';
-
-  unset($links['blog_usernames_blog']);
 
   if (count($links) > 0) {
     $output = '<ul'. drupal_attributes($attributes) .'>';
@@ -369,12 +387,23 @@ function blogbuzz_links($links, $attributes = array('class' => 'links')) {
       if (isset($link['href']) && $link['href'] == $_GET['q']) {
         $class .= ' active';
       }
-      $output .= '<li class="'. $class .'">';
+
+	  $output .= '<li class="'. $class .'">';
+
+     // Is the title HTML?
+      $html = isset($link['html']) && $link['html'];
+
+      // Initialize fragment and query variables.
+      $link['query'] = isset($link['query']) ? $link['query'] : NULL;
+      $link['fragment'] = isset($link['fragment']) ? $link['fragment'] : NULL;
 
       if (isset($link['href'])) {
-        // Pass in $link as $options, they share the same keys.
-        $link['html'] = TRUE;
-		$output .= l('<span>'. $link['title'] .'</span>', $link['href'], $link);
+        $link_options = array('attributes'  => $link['attributes'],
+                              'query'       => $link['query'],
+                              'fragment'    => $link['fragment'],
+                              'absolute'    => FALSE,
+                              'html'        => $html);
+        $output .= l($link['title'], $link['href'], $link_options);
       }
 
       else if (!empty($link['title'])) {
@@ -391,41 +420,11 @@ function blogbuzz_links($links, $attributes = array('class' => 'links')) {
 
       $i++;
       $output .= "</li>";
-
-      if($attributes['class'] == 'links term-links') {
-       $output .= " /";
-      }
-      $output .= "\n";
+      $output .= " \n";
     }
-
     $output .= '</ul>';
   }
-
   return $output;
-}
-
-function blogbuzz_menu_item_link($link) {
-  if (empty($link['options'])) {
-    $link['options'] = array();
-  }
-
-  // If an item is a LOCAL TASK, render it as a tab
-  if ($link['type'] & MENU_IS_LOCAL_TASK) {
-    $link['title'] = '<span class="tab">' . check_plain($link['title']) . '</span>';
-    $link['options']['html'] = TRUE;
-  }
-
-  if (empty($link['type'])) {
-    $true = TRUE;
-  }
-  
-  // Do special stuff for PRIMARY LINKS here
-  if ($link['menu_name'] == 'primary-links') {
-    $link['title'] = '<span>' . check_plain($link['title']) . '</span>';
-    $link['options']['html'] = TRUE;
-  }
-
-  return l($link['title'], $link['href'], $link['options']);
 }
 
 /**
@@ -445,8 +444,8 @@ function blogbuzz_menu_item_link($link) {
  */
 function blogbuzz_id_safe($string) {
   // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
-  $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
-  // If the first character is not a-z, add 'n' in front.
+  $string = strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', $string));
+  // If the first character is not a-z, add 'id' in front.
   if (!ctype_lower($string{0})) { // Don't use ctype_alpha since its locale aware.
     $string = 'id' . $string;
   }
@@ -462,4 +461,17 @@ function blogbuzz_filter_tips($tips, $long = FALSE, $extra = '') {
 
 function blogbuzz_filter_tips_more_info () {
   return '';
+}
+
+// Override theme_button 
+function phptemplate_button($element) { 
+  // Make sure not to overwrite classes. 
+  if (isset($element['#attributes']['class'])) { 
+    $element['#attributes']['class'] = 'form-'. $element['#button_type'] .' '. $element['#attributes']['class']; 
+  }
+  else { 
+    $element['#attributes']['class'] = 'form-'. $element['#button_type']; 
+  } 
+  // We here wrap the output with a couple span tags 
+  return '<span class="button"><input type="submit" '. (empty($element['#name']) ? '' : 'name="'. $element['#name'] .'" ') .'id="'. $element['#id'].'" value="'. check_plain($element['#value']) .'" '. drupal_attributes($element['#attributes']) ." /></span>\n"; 
 }

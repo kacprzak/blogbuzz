@@ -12,11 +12,12 @@
 |   Author: Antsin.com                                           |
 |   Website: http://www.antsin.com/                              |
 |----------------------------------------------------------------+
-*/  
+*/ 
 ?>
 
 <div class="<?php print $classes; ?>">
   <div class="node-inner clear-block">
+    <span class="date"><?php echo date("d", $created);?> <?php echo date("M", $created);?></span>
     <?php if (!$page): ?>
       <h1 class="title"><a href="<?php print $node_url; ?>" title="<?php print $title ?>"><?php print $title; ?></a></h1>
     <?php endif; ?>
@@ -24,7 +25,7 @@
       <div class="unpublished"><?php print t('Unpublished'); ?></div>
     <?php endif; ?>
     <?php if ($submitted): ?>
-	  <span class="submitted">Posted on <?php echo date("d. M, Y", $created).t(' by ').$name; ?></span>
+	  <span class="submitted"><?php echo t('Posted by ').$name; ?></span>
     <?php endif; ?>
     <?php if ($terms): ?>
       <span class="terms"><?php print t(' in ') . $node_terms; ?></span>
