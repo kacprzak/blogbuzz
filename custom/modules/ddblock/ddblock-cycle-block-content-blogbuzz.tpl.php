@@ -12,6 +12,14 @@
 |   Author: Antsin.com                                           |
 |   Website: http://www.antsin.com/                              |
 |----------------------------------------------------------------+
+*
+* This file incorporates work covered by the following copyright and permission notice
+*
+* Dynamic display block module template: vsd-upright60 - content template
+* Copyright (c) 2008 - 2009 P. Blaauw All rights reserved.
+* Version 1.1 (01-SEP-2009)
+* Licenced under GPL license
+* http://www.gnu.org/licenses/gpl.html
 */
 // add Cascading style sheet
 drupal_add_css($directory .'/custom/modules/ddblock/' . $custom_template . '/ddblock-cycle-'. $custom_template . '.css', 'template', 'all', FALSE);
