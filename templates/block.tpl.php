@@ -12,27 +12,18 @@
 |   Author: Antsin.com                                           |
 |   Website: http://www.antsin.com/                              |
 |----------------------------------------------------------------+
-*/
-
-  $form['tnt_container']['style_settings'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Blogbuzz color setting'),
-    '#description' => t('Use color setting to change default color for your theme.'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
-  $form['tnt_container']['style_settings']['style'] = array(
-    '#type' => 'select',
-    '#title' => t('Color'),
-    '#default_value' => theme_get_setting('style'),
-    '#options' => array(
-      'stone'    => t('Stone Soft'),
-	  'pink'     => t('Fresh Pink'),
-      'blue'     => t('Sky Blue'),
-	  'chocolate'=> t('Chocolate Milk'),
-    ),
-  ); 
- 
-  return $form; 
+*/  
 ?>
+
+<?php if ($block->region =='primary_menu' || $block->region =='content'): ?>
+  <?php print $content; ?>
+<?php else: ?>
+  <div id="block-<?php print $block->module . '-' . $block->delta; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
+    <div class="block-inner clearfix">
+      <?php if ($block->subject): ?><div class="title"><h2><?php print $block->subject ?></h2></div><?php endif; ?>
+      <div class="content"<?php print $content_attributes; ?>>
+        <?php print $content; ?>
+      </div>
+    </div>
+  </div> <!-- /block-inner, /block -->
+<?php endif; ?>
