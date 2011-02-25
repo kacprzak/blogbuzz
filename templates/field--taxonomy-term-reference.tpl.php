@@ -1,5 +1,4 @@
 <?php
-// $Id$
 /**
  * @file
  * Output for taxonomy term reference fields.
